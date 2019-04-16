@@ -18,8 +18,20 @@
 *
 */
 
-var rockPaperScissors = function (
-) {
-  // TODO: your solution here
+var rockPaperScissors = function(n) {
+  var output = [''];
+
+  var rpsIterator = function(input) {
+    return [input + 'R', input + 'P', input + 'S'];
+  };
+
+  for (let i = 0; i < n; i++) {
+    var current = [];
+    for (let j = 0; j < output.length; j++) {
+      current.concat = (rpsIterator(output[j]));
+    }
+    output = current;
+  }
+  return output;
 };
 
