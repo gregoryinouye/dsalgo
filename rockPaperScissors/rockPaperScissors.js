@@ -28,10 +28,10 @@ var rockPaperScissors = function(n) {
   for (let i = 0; i < n; i++) {
     var current = [];
     for (let j = 0; j < output.length; j++) {
-      current.concat = (rpsIterator(output[j]));
+      current = current.concat(rpsIterator(output[j]));
     }
     output = current;
   }
+
   return output;
 };
-
