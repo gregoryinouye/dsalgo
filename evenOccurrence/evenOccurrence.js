@@ -16,16 +16,11 @@ var evenOccurrence = function(arr) {
   var currentMaxCount = 0;
   arr.forEach(function(element) {
     count[element] ? count[element] += 1 : count[element] = 1;
-    if (count[element] % 2 === 0 && count[element] >= currentMaxCount) {
-      if (currentMax || arr.indexOf(currentMax) < arr.indexOf(element)) {
-        currentMax = element;
-      }
-      currentMaxCount = count[element];
+  });
+  arr.forEach(function(element) {
+    if (count[element] > currentMaxCount) {
+      currentMax = element
     }
   });
   return currentMax;
 };
-
-
-var onlyEven = evenOccurrence([1, 7, 2, 4, 5, 6, 8, 9, 6, 4]);
-console.log(onlyEven); //  4
