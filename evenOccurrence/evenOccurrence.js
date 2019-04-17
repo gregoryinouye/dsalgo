@@ -18,8 +18,8 @@ var evenOccurrence = function(arr) {
     count[element] ? count[element] += 1 : count[element] = 1;
   });
   arr.forEach(function(element) {
-    if (count[element] > currentMaxCount) {
-      currentMax = element
+    if (count[element] % 2 === 0 && count[element] > currentMaxCount) {
+      currentMax = element;
     }
   });
   return currentMax;
