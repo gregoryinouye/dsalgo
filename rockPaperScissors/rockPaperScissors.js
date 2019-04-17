@@ -18,7 +18,7 @@
 *
 */
 
-var rockPaperScissors = function(n) {
+var rockPaperScissors = function(n = 3) {
   var output = [''];
 
   var rpsIterator = function(input) {
