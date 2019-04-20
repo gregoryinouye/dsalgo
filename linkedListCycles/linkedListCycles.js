@@ -36,5 +36,18 @@ var Node = function(value) {
 };
 
 var hasCycle = function(linkedList) {
-  // TODO: implement me!
+  var history = {};
+
+  var hasCycleHelper = function(node) {
+    if (!node.next) {
+      return false;
+    } else if (history[node.next.value]) {
+      return true;
+   } else {
+     history[node.next.value] = node.value;
+     return hasCycleHelper(node.next);
+   }
+  };
+
+  return hasCycleHelper(linkedList);
 };
