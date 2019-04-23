@@ -32,7 +32,16 @@
 
 // Feel free to add helper functions if needed.
 
-
 var bubbleSort = function(array) {
-  // Your code here.
+  let hasChanges = false;
+
+  for (let i = 0; i < array.length - 1; i++) {
+    if (array[i] > array[i + 1]) {
+      hasChanges = true;
+      array = array.slice(0, i).concat(array[i + 1], array[i], array.slice(i + 2));
+    }
+  }
+  return hasChanges ? bubbleSort(array) : array;
 };
+
+// time complexity: linear
