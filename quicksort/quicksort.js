@@ -10,6 +10,21 @@
  *    Combines the two arrays and the pivot into a sorted array.
  */
 
-
 var quicksort = function(array) {
+  if (array.length === 1) {
+    return [array[0]];
+  } else if (array.length === 0) {
+    return [];
+  }
+  let pivot = array[0];
+  let smallerArray = [];
+  let largerArray = [];
+  for (let i = 1; i < array.length; i++) {
+    if (pivot < array[i]) {
+      largerArray.push(array[i]);
+    } else {
+      smallerArray.push(array[i]);
+    }
+  }
+  return quicksort(smallerArray).concat(pivot, quicksort(largerArray));
 };
