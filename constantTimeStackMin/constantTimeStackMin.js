@@ -20,12 +20,14 @@
   var Stack = function() {
     this.numItems = 0;
     this.minimum = undefined;
-    // this.minKeys = [];
+    this.minStack = [];
     this.list = {};
 
   // add an item to the top of the stack
     this.push = function(value) {
-      this.minimum = this.minimum ? Math.min(this.minimum, value) : value;
+      if (this.minStack.length === 0 || value === this.minStack[this.minStack.length - 1]) {
+      	this.minStack.push(value);
+      }
       this.numItems++;
       this.list[this.numItems] = value;
     };
@@ -40,7 +42,7 @@
       this.numItems--;
       // update min
       if (this.minimum === popped) {
-        this.minimum = undefined;
+        this.minStack.pop();
       }
       return popped;
     };
@@ -52,7 +54,7 @@
   
   // return the minimum value in the stack
     this.min = function() {
-      return this.minimum;
+      return this.minStack[this.minStack.length - 1];
     };
   };
 
