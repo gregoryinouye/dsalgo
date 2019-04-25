@@ -25,7 +25,7 @@
 
   // add an item to the top of the stack
     this.push = function(value) {
-      if (this.minStack.length === 0 || value === this.minStack[this.minStack.length - 1]) {
+      if (this.minStack.length === 0 || value <= this.minStack[this.minStack.length - 1]) {
       	this.minStack.push(value);
       }
       this.numItems++;
