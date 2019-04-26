@@ -98,5 +98,44 @@
 
 
 var mergeSort = function(array) {
-  // Your code here.
+  // create array of arrays
+  let sublistArray = array.map(element => [element]);
+
+  let mergeSublists = function(arr) {
+  // recursive function
+    if (arr.length === 1) {
+      return arr;
+    }
+    // go through list of arrays by two, or last one if uneven
+    let resultArrays = [];
+    for (let numArray = 0; numArray < arr.length; numArray++) {
+      let sortArr = arr[numArray];
+      let intoArr = arr[numArray + 1] || [];
+      let insertionIndex = 0;
+      for (let i = 0; i < sortArr.length; i++) {
+        // if insertionIndex is >= intoArr.length, add 
+        // if number in sortArr is larger than intoArr, check check next number in intoArr
+        // if number in sortArr is <= than intoArr, then insert number
+
+        if (insertionIndex > intoArr.length) {
+          intoArr.splice(intoArr[insertionIndex], 0, sortArr[i]);
+        } else if (sortArr[i] > intoArr[insertionIndex]) {
+          insertionIndex++;
+          i--;
+        } else if (sortArr[i] <= intoArr[insertionIndex]) {
+          intoArr.splice(insertionIndex, 0, sortArr[i]);
+          insertionIndex++;
+        }
+      } 
+    }
+    arr.forEach((sublist, index) => {
+      if (index % 2 === 1) {
+          resultArrays.push(sublist);
+      }
+    });
+    mergeSublists(resultArrays);
+  }
+  
+  // call recursive merge function on individual arrays
+  return mergeSublists(sublistArray);
 };
