@@ -31,16 +31,16 @@
  *   See https://www.dartmouth.edu/~chance/teaching_aids/books_articles/Mann.pdf .
  */
 
-var shuffleDeck = function(deck) {
-  let shuffledArray = [];
+// var shuffleDeck = function(deck) {
+//   let shuffledArray = [];
 
-  for (let i = deck.length; i > 0; i--) {
-    let index = Math.floor(Math.random()*i)
-    shuffledArray.push(deck.splice(index, 1)[0])
-  }
+//   for (let i = deck.length; i > 0; i--) {
+//     let index = Math.floor(Math.random()*i);
+//     shuffledArray.push(deck.splice(index, 1)[0]);
+//   }
 
-  return shuffledArray;
-};
+//   return shuffledArray;
+// };
 
 // Ordered deck generator provided for your testing convenience
 // (You may alter this function, but an unaltered copy will be used for tests.)
@@ -54,6 +54,22 @@ var orderedDeck = function() {
       deck.push(value + suit);
     });
   });
+
+  return deck;
+};
+
+// for large N
+
+var shuffleDeck = function(deck) {
+
+  for (let i = 0; i < 7 * deck.length; i++) {
+    let index1 = Math.floor(Math.random()*deck.length);
+    let index2 = Math.floor(Math.random()*deck.length);
+    let value1 = deck[index1];
+    let value2 = deck[index2];
+    deck[index1] = value2;
+    deck[index2] = value1;
+  }
 
   return deck;
 };
