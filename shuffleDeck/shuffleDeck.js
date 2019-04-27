@@ -62,7 +62,7 @@ var orderedDeck = function() {
 
 var shuffleDeck = function(deck) {
 
-  for (let i = 0; i < deck.length; i++) {
+  for (let i = 0; i < 2 * deck.length; i++) {
     let index1 = Math.floor(Math.random()*deck.length);
     let index2 = Math.floor(Math.random()*deck.length);
     let value1 = deck[index1];
