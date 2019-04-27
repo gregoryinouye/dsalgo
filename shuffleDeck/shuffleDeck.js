@@ -44,6 +44,7 @@
 
 // Ordered deck generator provided for your testing convenience
 // (You may alter this function, but an unaltered copy will be used for tests.)
+
 var orderedDeck = function() {
   var suits = [ '♥', '♣', '♠', '♦' ];
   var values = [ 'A', 2, 3, 4, 5, 6, 7, 8, 9, 10, 'J', 'Q', 'K' ];
@@ -62,7 +63,7 @@ var orderedDeck = function() {
 
 var shuffleDeck = function(deck) {
 
-  for (let i = 0; i < 2 * deck.length; i++) {
+  for (let i = 0; i < 5 * deck.length; i++) {
     let index1 = Math.floor(Math.random()*deck.length);
     let index2 = Math.floor(Math.random()*deck.length);
     let value1 = deck[index1];
