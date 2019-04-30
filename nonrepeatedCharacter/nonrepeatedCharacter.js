@@ -7,5 +7,12 @@
  */
 
 var firstNonRepeatedCharacter = function(string) {
-  // TODO: your solution here
+  let array = [...string];
+  let result = null;
+  for (let i = 0; i < array.length; i++) {
+    if (array.indexOf(array[i]) === array.lastIndexOf(array[i])) {
+      return result = array[i];
+    }
+  }
+  return result;
 };
