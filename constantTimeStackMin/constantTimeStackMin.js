@@ -57,4 +57,3 @@
       return this.minStack[this.minStack.length - 1];
     };
   };
-
