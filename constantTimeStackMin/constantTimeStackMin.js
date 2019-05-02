@@ -41,7 +41,7 @@
       delete this.list[this.numItems];
       this.numItems--;
       // update min
-      if (this.minimum === popped) {
+      if (this.minStack[this.minStack.length - 1] === popped) {
         this.minStack.pop();
       }
       return popped;
