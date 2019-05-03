@@ -24,8 +24,33 @@ makeChange(1) === 1
 makeChange(2) === 2
 */
 
+// let currObj = {1: 0, 2: 0, 5: 0, 10: 0, 20: 0, 50: 0, 100: 0, 200: 0};
+// let currArr = [200, 100, 50, 20, 10, 5, 2, 1];
+// let currSoln = [0, 0, 0, 0, 0, 0, 0, 0];
+
+let calcValue = function(qtyArr) {
+  let valArr = [200, 100, 50, 20, 10, 5, 2, 1];
+  return qtyArr.reduce((accumulator, currVal, currIndex) => currVal * valArr[currIndex] + accumulator, 0);
+}
+
 var makeChange = function(total) {
+  let solutions = 0;
 
+  let makeChangeRecurser = function(currArr, index) {
+    currArr[index] += 1;
+    currentTotal = calcValue(currArr);
+    if (currentTotal < total) {
+      makeChangeRecurser(currArr, index);
+    }
+    if (currentTotal === total) {
+      solutions += 1;
+    }
+    currArr[index] -= 1;
+    if (index < 7) {
+    makeChangeRecurser(currArr, index + 1);
+    }
+  }
+
+  makeChangeRecurser([0, 0, 0, 0, 0, 0, 0, 0], 0);
+  return solutions;
 };
-
-
