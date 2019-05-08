@@ -23,7 +23,7 @@ var binarySearch = function (array, target) {
     } else if (target < array[midIndex]) {
       maxIndex = midIndex;
       midIndex = Math.floor((minIndex + maxIndex) / 2);
-    } else if (target = array[midIndex]) {
+    } else if (target === array[midIndex]) {
       targetIndex = midIndex;
     }
   }
