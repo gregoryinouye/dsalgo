@@ -19,9 +19,9 @@ var deepEquals = function(apple, orange) {
     if (!keysOne.every((element, index) => element === keysTwo[index])) {
       return false;
     }
-    valuesOne = keysOne.map(key => apple[key]);
-    valuesTwo = keysTwo.map(key => orange[key]);
-    compareArr = valuesOne.map((element, index) => deepEquals(element, valuesTwo[index]));
+    let valuesOne = keysOne.map(key => apple[key]);
+    let valuesTwo = keysTwo.map(key => orange[key]);
+    let compareArr = valuesOne.map((element, index) => deepEquals(element, valuesTwo[index]));
     return compareArr.reduce((accumulator, current) => accumulator && current, true);
   } else {
     return apple === orange;
