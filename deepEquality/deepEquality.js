@@ -11,5 +11,19 @@
   * don't worry about handling cyclical object structures.
   *
   */
+
 var deepEquals = function(apple, orange) {
+  if (typeof apple === 'object' && typeof orange === 'object') {
+    let keysOne = Object.keys(apple).sort();
+    let keysTwo = Object.keys(orange).sort();
+    if (!keysOne.every((element, index) => element === keysTwo[index])) {
+      return false;
+    }
+    valuesOne = keysOne.map(key => apple[key]);
+    valuesTwo = keysTwo.map(key => orange[key]);
+    compareArr = valuesOne.map((element, index) => deepEquals(element, valuesTwo[index]));
+    return compareArr.reduce((accumulator, current) => accumulator && current, true);
+  } else {
+    return apple === orange;
+  }
 };
