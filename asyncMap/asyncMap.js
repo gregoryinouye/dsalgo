@@ -37,6 +37,16 @@
  *
  */
 
+var asyncMap = (tasks, callback) => {
+  let checkpoint = 0;
+  let total = tasks.length;
+  let results = [];
 
-var asyncMap = function(tasks, callback) {
+  tasks.forEach((async, index) => async((data) => {
+    checkpoint += 1;
+    results[index] = data;
+    if (checkpoint === total) {
+      callback(results);
+    }
+  }));
 };
