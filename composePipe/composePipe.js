@@ -35,13 +35,9 @@
 
 var compose = function(...funcArr) {
   funcArr.reverse();
-  return (input) => {
-    return funcArr.reduce((result, func) => func(result), input);
-  };
+  return (input) => funcArr.reduce((result, func) => func(result), input);
 };
-  
-var pipe = function(...funcArr) {
-  return (input) => {
-    return funcArr.reduce((result, func) => func(result), input);
-  };
+
+var pipe = (...funcArr) => {
+  return (input) => funcArr.reduce((result, func) => func(result), input);
 };
