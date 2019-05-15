@@ -35,10 +35,20 @@ var Tree = function(value) {
   this.children = [];
 };
 
+Tree.prototype.BFSelect = function(filter, depth = 0) {
+  let result = [];
+  var level = [this];
+  var nextLevel = [];
 
+  while (level.length > 0) {
+    level.forEach(tree => filter(tree.value, depth) ? result.push(tree.value) : null);
+    nextLevel = [];
+    level.forEach(tree => tree.children.forEach(child => nextLevel.push(child)));
+    level = nextLevel;
+    depth += 1;
+  }
 
-Tree.prototype.BFSelect = function(filter) {
-  // return an array of values for which the function filter(value, depth) returns true
+  return result;
 };
 
 /**
