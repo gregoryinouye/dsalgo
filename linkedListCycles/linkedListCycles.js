@@ -36,18 +36,17 @@ var Node = function(value) {
 };
 
 var hasCycle = function(linkedList) {
-  var history = {};
+  let pointerOne = linkedList.next;
+  let pointerTwo = linkedList.next.next;
 
-  var hasCycleHelper = function(node) {
-    if (!node.next) {
-      return false;
-    } else if (history[node.next.value]) {
+  while (pointerOne && pointerTwo) {
+    if (pointerOne === pointerTwo) {
       return true;
-   } else {
-     history[node.next.value] = node.value;
-     return hasCycleHelper(node.next);
-   }
-  };
+    }
 
-  return hasCycleHelper(linkedList);
+    pointerOne = pointerOne.next;
+    pointerTwo = pointerTwo.next ? pointerTwo.next.next : null;
+  }
+
+  return false;
 };
