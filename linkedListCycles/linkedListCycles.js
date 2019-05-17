@@ -36,8 +36,9 @@ var Node = function(value) {
 };
 
 var hasCycle = function(linkedList) {
+
   let pointerOne = linkedList.next;
-  let pointerTwo = linkedList.next.next;
+  let pointerTwo = linkedList.next ? linkedList.next.next : null;
 
   while (pointerOne && pointerTwo) {
     if (pointerOne === pointerTwo) {
