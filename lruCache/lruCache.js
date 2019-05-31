@@ -31,18 +31,36 @@
  */
 
 var LRUCache = function (limit) {
+  this.limit = limit;
+  this.list = new List;
+  this.count = 0;
 };
 
 var LRUCacheItem = function (val, key) {
+  this.key = key;
+  this.val = val;
 };
 
 LRUCache.prototype.size = function () {
+  return this.count;
 };
 
 LRUCache.prototype.get = function (key) {
+  // move cache item to head of list
+  this.list.moveToFront(this[key]);
+  // return value
+  return this[key].val;
 };
 
 LRUCache.prototype.set = function (key, val) {
+  if (this.count === this.limit) {
+    // use this to return key and delete LRUCacheItem?
+    delete this[this.list.pop()];
+    this.count--;
+  }
+  this[key] = new LRUCacheItem(val, key);
+  this.list.unshift(this[key]);
+  this.count++;
 };
 
 
