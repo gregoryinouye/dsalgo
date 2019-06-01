@@ -38,6 +38,21 @@ function Node (val) {
 
 
 function linkedListIntersection(list1, list2) {
-  // TODO: Implement this function!
+  let pointerOne = list1;
+
+  while (pointerOne) {
+    let pointerTwo = list2;
+
+    while (pointerTwo) {
+      if (pointerOne === pointertwo) {
+        return true;
+      }
+      pointerTwo = pointerTwo.next;
+    }
+    
+    pointerOne = pointerOne.next;
+  }
+
+  return false;
 }
 
