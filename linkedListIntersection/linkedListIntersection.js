@@ -33,9 +33,7 @@ function Node (val) {
   obj.value = val || null;
   obj.next = null;
   return obj;
-}
-
-
+};
 
 function linkedListIntersection(list1, list2) {
   let pointerOne = list1;
@@ -45,14 +43,13 @@ function linkedListIntersection(list1, list2) {
 
     while (pointerTwo) {
       if (pointerOne === pointertwo) {
-        return true;
+        return pointerOne;
       }
       pointerTwo = pointerTwo.next;
     }
-    
+
     pointerOne = pointerOne.next;
   }
 
-  return false;
-}
-
+  return null;
+};
