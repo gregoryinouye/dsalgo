@@ -38,7 +38,6 @@
  * evenNumbers.includes(2) should be true, evenNumbers.includes(3) should be false
  */
 
-
 var Range = function(start, end = start, step = 1) {
   if (start === null) {
     return null;
@@ -48,7 +47,9 @@ var Range = function(start, end = start, step = 1) {
     step = - step;
   }
 
-  return {start: start, end: end, step: step};
+  this.start = start;
+  this.end = end;
+  this.step = step;
 };
 
 Range.prototype.size = function () {
@@ -65,30 +66,27 @@ Range.prototype.size = function () {
 };
 
 Range.prototype.each = function (callback) {
-  let starting = this.start;
+  let current = this.start;
   let ending = this.end;
 
-  while (starting !== ending) {
-    callback(starting);
-    starting += this.step;
-    count += 1;
+  while (current !== ending) {
+    callback(current);
+    current += this.step;
   }
 
-  callback(starting);
+  callback(current);
 };
 
 Range.prototype.includes = function (val) {
-  let starting = this.start;
+  let current = this.start;
   let ending = this.end;
 
-  while (starting !== ending) {
-    if (starting === val) {
+  while (current !== ending) {
+    if (current === val) {
       return true;
     }
-    starting += this.step;
+    current += this.step;
   }
 
-  return starting === val;
+  return current === val;
 };
-
-// var range = new Range(1);
