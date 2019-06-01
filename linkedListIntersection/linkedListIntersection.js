@@ -42,7 +42,7 @@ function linkedListIntersection(list1, list2) {
     let pointerTwo = list2;
 
     while (pointerTwo) {
-      if (pointerOne === pointertwo) {
+      if (pointerOne === pointerTwo) {
         return pointerOne;
       }
       pointerTwo = pointerTwo.next;
