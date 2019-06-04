@@ -28,6 +28,9 @@ var DIGIT_VALUES = {
 };
 
 var translateRomanNumeral = function(romanNumeral) {
+  if (typeof romanNumeral !== 'string') {
+    return null;
+  }
   const firstVal = DIGIT_VALUES[romanNumeral[0]] || 0;
   if (romanNumeral.length > 1) {
     const secondVal = DIGIT_VALUES[romanNumeral[1]] || 0;
@@ -38,32 +41,4 @@ var translateRomanNumeral = function(romanNumeral) {
     }
   }
   return firstVal;
-}
-
-// var translateRomanNumeral = function(romanNumeral) {
-//   let value = 0;
-
-//   const parseRoman = romanNumeral => {
-//     const firstVal = DIGIT_VALUE[romanNumeral[0]];
-//     if (romanNumeral.length > 1) {
-//       const secondVal = DIGIT_VALUE[romanNumeral[1]];
-//       if (firstVal < secondVal) {
-//         return secondVal - firstVal + parseRoman(romanNumeral.slice(2));
-//       } else {
-//         return firstVal + parseRoman(romanNumeral.slice(1));
-//       }
-//     }
-//     return firstVal;
-//   }
-
-// // decide if first numeral is additive or subtractive
-
-// // subtractive if first numeral is smaller than second numeral
-
-// // if no second numeral must be additive
-
-// // calculate value
-
-// // then iterate on remaining
-//   return value;
-// };
+};
