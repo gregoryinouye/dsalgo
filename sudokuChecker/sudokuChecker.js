@@ -21,7 +21,7 @@ Example input:
 // const board = "735814296\n896275314\n214963857\n589427163\n362189745\n471356982\n923541678\n648792531\n157638429";
 
 function sudokuChecker(board) {
-  return [0, 1, 2, 3, 4, 5, 6, 7, 8].every(element => checkAllNums(getColumn(board, element)) && checkAllNums(getRow(board, element)) && checkAllNums(getGrid(board, element)));
+  return [0, 1, 2, 3, 4, 5, 6, 7, 8].every(element => checkAllNums(getColumn(board, element)) && checkAllNums(getRow(board, element)) && checkAllNums(getGrid(board, element))) ? 'solved' : 'invalid';
 }
 
 const getColumn = (board, col) => {
