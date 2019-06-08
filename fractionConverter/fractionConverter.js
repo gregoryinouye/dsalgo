@@ -16,13 +16,11 @@ var toFraction = function(number) {
   let whole = Math.floor(number);
   let numerator = number - whole;
   let denominator = 1;
+  let power = String(number).length - String(whole).length - 1;
 
-  while (numerator !== Math.floor(numerator)) {
-    numerator *= 10;
-    denominator *= 10;
-  }
-
-  // find least common multiple
+  numerator *= Math.pow(10, power);
+  numerator = Math.floor(numerator);
+  denominator *= Math.pow(10, power);
 
   let leastCommonMultiple = 2;
 
@@ -36,3 +34,5 @@ var toFraction = function(number) {
   }
   return (whole * denominator + numerator) + '/' + denominator;
 };
+
+console.log(toFraction(3.45));
