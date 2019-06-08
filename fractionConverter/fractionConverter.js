@@ -13,5 +13,26 @@
  */
 
 var toFraction = function(number) {
-  // Your code here
+  let whole = Math.floor(number);
+  let numerator = number - whole;
+  let denominator = 1;
+
+  while (numerator !== Math.floor(numerator)) {
+    numerator *= 10;
+    denominator *= 10;
+  }
+
+  // find least common multiple
+
+  let leastCommonMultiple = 2;
+
+  while (numerator >= leastCommonMultiple) {
+    if (numerator % leastCommonMultiple === 0 && denominator % leastCommonMultiple === 0) {
+      numerator /= leastCommonMultiple;
+      denominator /= leastCommonMultiple;
+    } else {
+      leastCommonMultiple += 1;
+    }
+  }
+  return (whole * denominator + numerator) + '/' + denominator;
 };
