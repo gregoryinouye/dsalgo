@@ -16,7 +16,7 @@ var toFraction = function(number) {
   let whole = Math.floor(number);
   let numerator = number - whole;
   let denominator = 1;
-  let power = String(number).length - String(whole).length - 1;
+  let power = String(number).length - String(whole).length;
 
   numerator *= Math.pow(10, power);
   numerator = Math.floor(numerator);
@@ -34,5 +34,3 @@ var toFraction = function(number) {
   }
   return (whole * denominator + numerator) + '/' + denominator;
 };
-
-console.log(toFraction(3.45));
