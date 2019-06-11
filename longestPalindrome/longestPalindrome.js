@@ -7,4 +7,20 @@
 */
 
 var longestPalindrome = function (string) {
+  let palindrome = '';
+  string = string.toLowerCase();
+  const isPalindrome = string => [...string].reverse().join('') === string;
+
+  for (let i = 0; i < string.length; i++) {
+    let j = 0;
+    while (j <= i && isPalindrome(string.slice(i - j, i + j + 1)) && i + j < string.length) {
+      const currrent = string.slice(i - j, i + j + 1);
+      if (currrent.length > palindrome.length) {
+        palindrome = currrent;
+      }
+      j++;
+    }
+  }
+
+  return palindrome;
 };
