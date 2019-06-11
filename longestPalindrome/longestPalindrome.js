@@ -8,13 +8,22 @@
 
 var longestPalindrome = function (string) {
   let palindrome = '';
-  string = string.toLowerCase();
-  const isPalindrome = string => [...string].reverse().join('') === string;
+  const input = string.toLowerCase();
+  const isPalindrome = input => [...input].reverse().join('') === input;
 
-  for (let i = 0; i < string.length; i++) {
+  for (let i = 0; i < input.length; i++) {
     let j = 0;
-    while (j <= i && isPalindrome(string.slice(i - j, i + j + 1)) && i + j < string.length) {
-      const currrent = string.slice(i - j, i + j + 1);
+    while (j <= i && isPalindrome(input.slice(i - j, i + j + 1)) && i + j < input.length) {
+      const currrent = input.slice(i - j, i + j + 1);
+      if (currrent.length > palindrome.length) {
+        palindrome = currrent;
+      }
+      j++;
+    }
+
+    j = 0;
+    while (j <= i && isPalindrome(input.slice(i - j, i + j + 2)) && i + j < input.length) {
+      const currrent = input.slice(i - j, i + j + 2);
       if (currrent.length > palindrome.length) {
         palindrome = currrent;
       }
@@ -24,3 +33,7 @@ var longestPalindrome = function (string) {
 
   return palindrome;
 };
+
+
+
+console.log('.',longestPalindrome('There was a tattarraat on the racecar. It made a funny noise, gfedcbabcdefg'),'.');
