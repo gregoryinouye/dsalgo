@@ -58,14 +58,15 @@ var numbersToPlace = {
 Number.prototype.toEnglish = function () {
   let current = this;
   let words = '';
-
   const power = Math.floor(Math.log10(current));
-  // if it's a big number, break into pieces
-  if (power / 3 > 1) {
-    let next = current.toPrecision((power % 3) + 1));
+
+  if (power / 3 >= 1) {
+    let next = current.toPrecision((power % 3) + 1);
     let remainder = Number(current - next);
     next = Number(next / Math.pow(10, Math.floor(power / 3) * 3));
-    words += next.toEnglish() + numbersToPlace[Math.pow(10, Math.floor(power / 3) * 3)] + remainder.toEnglish();
+    words += next.toEnglish() + ' ' + numbersToPlace[Math.pow(10, Math.floor(power / 3) * 3)] + ' ' + remainder.toEnglish();
+  } else if (Math.log10(current) > 1.31) {
+
   } else {
     words += numbersToWords[current];
   }
@@ -74,4 +75,4 @@ Number.prototype.toEnglish = function () {
 };
 
 
-console.log(Number(525438).toEnglish())
+console.log(Number(5500001).toEnglish())
