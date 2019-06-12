@@ -53,6 +53,25 @@ var numbersToPlace = {
   1000000000000000000: 'quintillion',
 };
 
+// 3, 6, 9, 12, 15, 18
+
 Number.prototype.toEnglish = function () {
-  // return my value as english words
+  let current = this;
+  let words = '';
+
+  const power = Math.floor(Math.log10(current));
+  // if it's a big number, break into pieces
+  if (power / 3 > 1) {
+    let next = current.toPrecision((power % 3) + 1));
+    let remainder = Number(current - next);
+    next = Number(next / Math.pow(10, Math.floor(power / 3) * 3));
+    words += next.toEnglish() + numbersToPlace[Math.pow(10, Math.floor(power / 3) * 3)] + remainder.toEnglish();
+  } else {
+    words += numbersToWords[current];
+  }
+  
+  return words;
 };
+
+
+console.log(Number(525438).toEnglish())
