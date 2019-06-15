@@ -16,6 +16,36 @@
  */
 
 var rotatedArraySearch = function (rotated, target) {
-  // Your code here:
+  let i = 0;
+  let start = rotated[0];
+  let current = rotated[0];
+  let previous = null;
+  let lowest = null;
+  let targetIndex = null;
+
+  while (!targetIndex && !lowest && i < rotated.length) {
+    if (current < previous) {
+      lowest = current;
+    }
+    if (current === target) {
+      targetIndex = i;
+    }
+    i++;
+    current = rotated[i];
+  }
+
+  while (!targetIndex && target > lowest && target < start && i < rotated.length) {
+    if (current === target) {
+      targetIndex = i;
+    }
+    i++;
+    current = rotated[i];
+  }
+
+  return targetIndex;
 };
 
+// console.log(rotatedArraySearch([4, 5, 6, 0, 1, 2, 3], 2)) // 5
+// console.log(rotatedArraySearch([4, 5, 6, 0, 1, 2, 3], 100)) // null
+// console.log(rotatedArraySearch([4, 5, 6, 0, 1, 2, 3], 1.5)) // null
+// console.log(rotatedArraySearch([4, 5, 6, 0, 1, 2, 3], -1)) // null
