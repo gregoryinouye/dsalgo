@@ -30,6 +30,7 @@ var rotatedArraySearch = function (rotated, target) {
     if (current === target) {
       targetIndex = i;
     }
+    previous = current;
     i++;
     current = rotated[i];
   }
@@ -38,6 +39,7 @@ var rotatedArraySearch = function (rotated, target) {
     if (current === target) {
       targetIndex = i;
     }
+    previous = current;
     i++;
     current = rotated[i];
   }
@@ -49,3 +51,4 @@ var rotatedArraySearch = function (rotated, target) {
 // console.log(rotatedArraySearch([4, 5, 6, 0, 1, 2, 3], 100)) // null
 // console.log(rotatedArraySearch([4, 5, 6, 0, 1, 2, 3], 1.5)) // null
 // console.log(rotatedArraySearch([4, 5, 6, 0, 1, 2, 3], -1)) // null
+// console.log(rotatedArraySearch([4, 5, 6, 0, 1, 2, 3], 4.5)) // null
