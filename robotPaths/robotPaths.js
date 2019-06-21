@@ -28,6 +28,29 @@ var makeBoard = function(n) {
   return board;
 };
 
-var robotPaths = function(n, board, i, j) {
+var robotPaths = function(n, board = makeBoard(n), i = 0, j = 0) {
+  const moveUp = () => [i - 1, j];
+  const moveDown = () => [i + 1, j];
+  const moveLeft = () => [i, j - 1];
+  const moveRight = () => [i, j + 1];
+
+  const isWithinGrid = position => position[0] >= 0 && position[0] < n && position[1] >= 0 && position[1] < n;
+  const isValidMove = position => isWithinGrid(position) && !board.hasBeenVisited(position[0], position[1]);
+
+  board.togglePiece(i, j);
+
+  if (board.every(row => row.every(space => space))) {
+    return 1;
+  }
+
+  const newPos = [];
+  if (isValidMove(moveUp())) { newPos.push(moveUp()) }
+  if (isValidMove(moveDown())) { newPos.push(moveDown()) }
+  if (isValidMove(moveLeft())) { newPos.push(moveLeft()) }
+  if (isValidMove(moveRight())) { newPos.push(moveRight()) }
+  
+  return newPos.map(element => robotPaths(n, board, element[0], element[1])).reduce((acc, curr) => acc + curr, 0);
+
 };
 
+console.log(robotPaths(2));
