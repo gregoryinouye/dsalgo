@@ -8,13 +8,13 @@
 function countIslands(mapStr) {
   const map = mapStr.split('\n').map(element => [...element]);
   
-  const isUpLand = (i, j) => map[i - 1] ? map[i - 1][j] === '.' : false;
-  const isDownLand = (i, j) => map[i + 1] ? map[i + 1][j] === '.' : false;
-  const isRightLand = (i, j) => map[i][j + 1] === '.';
-  const isLeftLand = (i, j) => map[i][j - 1] === '.';
+  const isUpLand = (i, j) => map[i - 1] ? map[i - 1][j] === '0' : false;
+  const isDownLand = (i, j) => map[i + 1] ? map[i + 1][j] === '0' : false;
+  const isRightLand = (i, j) => map[i][j + 1] === '0';
+  const isLeftLand = (i, j) => map[i][j - 1] === '0';
 
   const findConnectedLand = (i, j) => {
-    if (map[i][j] !== '.') {
+    if (map[i][j] !== '0') {
       return;
     } else {
       map[i][j] = 1;
@@ -37,12 +37,12 @@ function countIslands(mapStr) {
 
   for (let i = 0; i < map.length; i++) {
     for (let j = 0; j < map[0].length; j ++) {
-      if (map[i][j] === '.') {
+      if (map[i][j] === '0') {
         islandCount++;
         findConnectedLand(i, j);
       }
     }
   }
-  
+
   return islandCount;
 };
