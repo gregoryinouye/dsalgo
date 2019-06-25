@@ -37,5 +37,20 @@
 
 
 var characterFrequency = function(string) {
+  const array = [...string].sort();
+  const result = [];
+
+  let i = 0;
+
+  while (i < array.length) {
+    const currentChar = array[i];
+    const nextCharIndex = array.lastIndexOf(currentChar);
+
+    result.push([currentChar, nextCharIndex - i + 1]);
+    i = nextCharIndex + 1;
+  }
+
+  result.sort((a, b) => b[1] - a[1]);
+
   return result;
 };
