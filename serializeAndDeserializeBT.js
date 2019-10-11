@@ -24,13 +24,18 @@ Note: Do not use class member/global/static variables to store states. Your seri
 Your functions will be called as such:
 deserialize(serialize(root));
 
+TEST
+node = TreeNode('root', TreeNode('left', TreeNode('left.left')), TreeNode('right'))
+assert deserialize(serialize(node)).left.left.val == 'left.left'
+
 */
 
 // Definition for a binary tree node.
 
-function TreeNode(val) {
-this.val = val;
-this.left = this.right = null;
+function TreeNode(val, left = null, right = null) {
+  this.val = val;
+  this.left = left;
+  this.right = right;
 }
  
 
