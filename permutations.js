@@ -4,7 +4,6 @@ Part A:
 
 const dict = { '1' : [a, b], '2': [c, d] };
 
-Part 1:
 Given an input string, return the permutations such that if you are given '12', the output is [ac, ad, bc, bd].
 
 
