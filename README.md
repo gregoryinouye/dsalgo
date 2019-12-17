@@ -1,2 +1,3 @@
-# dsalgo
-data structures and algorithm problems
+# Data Structures and Algorithms
+
+Data structures and algorithm practice problems
