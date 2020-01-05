@@ -36,24 +36,41 @@ Output: true
 /*
  * @param {string} s
  * @return {boolean}
- */
+*/
 
 var isValid = function(s) {
   let stack = [];
   let map = {
-      ')': '(',
-      '}': '{',
-      ']': '['
+    ')': '(',
+    '}': '{',
+    ']': '['
   };
   
   for (let paren of s) {
-      if (paren in map) {
-          const popped = stack.pop();
-          if (map[paren] !== popped) return false;
-      } else {
-          stack.push(paren);
-      }
+    if (paren in map) {
+        const popped = stack.pop();
+        if (map[paren] !== popped) return false;
+    } else {
+        stack.push(paren);
+    }
   }
   
   return stack.length === 0;
 };
+
+// alternatively, if parentheses are known to be of only '(' or ')'
+
+function validParentheses(text) {
+  let curr = 0;
+
+  for (paren of text) {
+    if (paren === '(') {
+      curr++;
+    } else if (paren === ')') {
+      curr--;
+      if (curr < 0) return false;
+    }
+  }
+
+  return curr === 0;
+}
