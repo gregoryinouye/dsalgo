@@ -33,11 +33,6 @@ Output: true
 
 */
 
-/*
- * @param {string} s
- * @return {boolean}
-*/
-
 var isValid = function(s) {
   let stack = [];
   let map = {
@@ -48,8 +43,8 @@ var isValid = function(s) {
   
   for (let paren of s) {
     if (paren in map) {
-        const popped = stack.pop();
-        if (map[paren] !== popped) return false;
+      const popped = stack.pop();
+      if (map[paren] !== popped) return false;
     } else {
         stack.push(paren);
     }
@@ -73,4 +68,4 @@ function validParentheses(text) {
   }
 
   return curr === 0;
-}
+};
